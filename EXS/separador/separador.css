@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+}
+
+input {
+    font-size: 20px;
+    padding: 10px;
+}
+
+button {
+    font-size: 18px;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+#resultado {
+    margin-top: 20px;
+}
+
+.letra {
+    font-size: 30px;
+    margin: 5px;
+    padding: 10px;
+    border: 2px solid black;
+    display: inline-block;
+    width: 40px;
+    text-align: center;
+}
