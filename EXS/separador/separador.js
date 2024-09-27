@@ -2,7 +2,7 @@ document.getElementById('separarBtn').addEventListener('click', function() {
     const palavra = document.getElementById('palavra').value;
     const resultado = document.getElementById('resultado');
     
-    resultado.innerHTML = '';  // Limpa o resultado anterior
+    resultado.innerHTML = '';  
 
     if (palavra) {
         palavra.split('').forEach(letra => {
