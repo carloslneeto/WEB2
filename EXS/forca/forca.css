@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+}
+
+#palavraSecreta {
+    font-size: 24px;
+    letter-spacing: 10px;
+    margin-bottom: 20px;
+}
+
+#letras {
+    margin-bottom: 20px;
+}
+
+button.letra {
+    padding: 10px 15px;
+    margin: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    border: 1px solid #333;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+button.letra:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+#boneco pre {
+    font-family: monospace;
+    font-size: 18px;
+}
+
+#resultado {
+    font-size: 24px;
+    margin-top: 20px;
+    font-weight: bold;
+}
