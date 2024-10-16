@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CRUD de Despesas</title>
+</head>
+<body>
+  <h1>Controle de Despesas</h1>
+
+  <form id="expenseForm">
+    <input type="text" id="descricao" placeholder="Descrição" required>
+    <input type="number" id="valor" placeholder="Valor" required>
+    <button type="submit">Adicionar Despesa</button>
+  </form>
+
+  <h2>Lista de Despesas</h2>
+  <table id="expenseList">
+    <thead>
+      <tr>
+        <th>Descrição</th>
+        <th>Valor</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <h3>Total de Despesas: R$ <span id="totalDespesas">0</span></h3>
+
+  <script src="app.js"></script>
+</body>
+</html>
