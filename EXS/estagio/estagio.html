@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title><?php echo $email['titulo']; ?></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        @media screen {
+            @font-face {
+                font-family: 'Lato';
+                font-style: normal;
+                font-weight: 400;
+                src: local('Lato Regular'), local('Lato-Regular'),
+                     url(https://fonts.gstatic.com/s/lato/v11/qIIYRU-oROkIk8vfvxw6QvesZW2xOQ-xsNqO47m55DA.woff) format('woff');
+            }
+            @font-face {
+                font-family: 'Lato';
+                font-style: normal;
+                font-weight: 700;
+                src: local('Lato Bold'), local('Lato-Bold'),
+                     url(https://fonts.gstatic.com/s/lato/v11/qdgUG4U09HnJwhYI-uK18wLUuEpTyoUstqEm5AMlJo4.woff) format('woff');
+            }
+        }
+
+        body, table, td, a {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        table, td {
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+
+        img {
+            border: 0;
+            height: auto;
+            line-height: 100%;
+            outline: none;
+            text-decoration: none;
+        }
+
+        body {
+            height: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        .senha-container {
+            display: inline-flex;
+            align-items: center;
+            border: 1px solid #000;
+            border-radius: 8px; 
+            overflow: hidden;
+            max-width: 90%;
+            flex-shrink: 0; 
+        }
+        #senhaInput {
+            font-size: 28px;
+            color: #000;
+            padding: 15px 15px;
+            border: none;
+            outline: none;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .btn-copiar {
+            background-color: #111;
+            border: none;
+            padding: 25px 28px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s, box-shadow 0.3s;
+            border-radius: 0 8px 8px 0;
+            position: relative;
+        }
+
+        .btn-copiar:hover {
+            background-color: #333;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+
+        .btn-copiar svg {
+            width: 40px;
+            height: 40px;
+            fill: #fff;
+            position: absolute;
+            transition: opacity 0.3s;
+        }
+
+        .btn-copiar .icon-copy { opacity: 1; }
+        .btn-copiar .icon-exit { opacity: 0; }
+
+        .btn-copiar:hover .icon-copy { opacity: 0; }
+        .btn-copiar:hover .icon-exit { opacity: 1; }
+
+        @media screen and (max-width:600px) {
+            h1 {
+                font-size: 24px !important;
+                line-height: 24px !important;
+            }
+            #senhaInput {
+                font-size: 22px;
+                padding: 12px 12px;
+            }
+            .btn-copiar {
+                padding: 20px 25px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td bgcolor="#efefef" align="center">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
+                    <tr>
+                        <td align="center" valign="top" style="padding: 40px 10px 40px 10px;">
+                            <a href="<?php echo $email['empresa']['url']; ?>" target="_blank">
+                                <img src="<?php echo $email['empresa']['logo_alt']; ?>" width="180" style="max-width:180px;" border="0">
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr>
+            <td bgcolor="#efefef" align="center" style="padding: 0px 10px 0px 10px;">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
+                    <tr>
+                        <td bgcolor="#ffffff" align="center" valign="top"
+                            style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0 0; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;">
+                            <h1 style="font-size: 24px; font-weight: 400; margin: 0;"><?php echo $email['titulo']; ?></h1>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr>
+            <td bgcolor="#efefef" align="center">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width: 600px;">
+                    <tbody>
+                        <tr>
+                            <td bgcolor="#ffffff" align="center" style="padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
+                                <p style="margin: 0;">Acesse agora mesmo sua conta usando a senha:</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#ffffff" align="center" style="padding: 20px 30px 60px 30px;">
+                                <!-- Container moderno -->
+                                <div class="senha-container">
+                                    <input type="text" id="senhaInput" value="<?php echo htmlspecialchars($email['usuario']['senha']); ?>" readonly>
+                                    <button class="btn-copiar" onclick="copiarESite()">
+                                        <!-- Ícone copiar -->
+                                        <svg class="icon-copy" viewBox="0 0 24 24">
+                                            <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                                        </svg>
+                                        <!-- Ícone sair -->
+                                        <svg class="icon-exit" viewBox="0 0 24 24">
+                                            <path d="M14 3v2h3.59L10 12.59 11.41 14 19 6.41V10h2V3h-7zM5 5h7V3H5c-1.1 
+                                            0-2 .9-2 2v14c0 1.1.9 2 2 
+                                            2h7v-2H5V5z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+
+        <tr>
+            <td bgcolor="#f4f4f4" align="center" style="padding: 20px;">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
+                    <tr>
+                        <td bgcolor="#ddd" align="center" style="padding: 20px; border-radius: 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 25px;">
+                            <h2 style="margin-top: 10px; font-size: 20px; font-weight: 400; color: #111111;">Precisa de ajuda?</h2>
+                            <p style="margin-top: 10px;">
+                                Entre em contato por telefone <?php if(!empty($email['empresa']['ddd'])){ ?>(<?php echo $email['empresa']['ddd']; ?>) <?php } ?><?php if(!empty($email['empresa']['telefone'])){ ?><?php echo $email['empresa']['telefone']; ?><?php } ?>
+                                <?php if(!empty($email['empresa']['ddd_celular']) && !empty($email['empresa']['celular'])){ ?> / (<?php echo $email['empresa']['ddd_celular']; ?>) <?php echo $email['empresa']['celular']; ?><?php } ?>
+                                <br>ou por e-mail <?php echo $email['empresa']['email']; ?>
+                                <br><a href="<?php echo $email['empresa']['url']; ?>" target="_blank"><?php echo $email['empresa']['url']; ?></a>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+    </table>
+
+    <script>
+        function copiarESite() {
+            const senhaInput = document.getElementById('senhaInput');
+            senhaInput.select();
+            senhaInput.setSelectionRange(0, 99999); 
+            document.execCommand('copy');
+
+            // Abre o site em nova aba
+            window.open('https://www.karnekeijo.com.br/entrar', '_blank');
+        }
+    </script>
+
+</body>
+</html>
